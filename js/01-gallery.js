@@ -22,14 +22,24 @@ galleryEl.insertAdjacentHTML('afterbegin', galleryItems.map(galleryItem => {
 galleryEl.addEventListener('click', onImgClick);
 
 
-function onImgClick(e) {
+function onImgClick(e) {    
     e.preventDefault();
     if (!e.target.dataset.source) {
         return
     }
-    basicLightbox.create(`
+    const lightBox = basicLightbox.create(`
 		<img  src="${e.target.dataset.source}">
-	`).show()      
+	`);
+    lightBox.show();
+    
+    this.addEventListener("keydown", onPresEscape);
+    function onPresEscape(e) {
+        if (e.key !== "Escape") {
+            return
+        }
+        lightBox.close();
+        this.removeEventListener("keydown", onPresEscape);
+    }
 }
 
 
