@@ -8,9 +8,11 @@ galleryEl.insertAdjacentHTML(
   galleryItems
     .map(galleryItem => {
       return `
-        <a class="gallery__item" href="${galleryItem.original}">
-            <img class="gallery__image" src="${galleryItem.preview}" alt="${galleryItem.description}" />
-        </a>   
+        <li>
+          <a class="gallery__item" href="${galleryItem.original}">
+              <img class="gallery__image" src="${galleryItem.preview}" alt="${galleryItem.description}" />
+          </a> 
+        </li>  
     `;
     })
     .join('')

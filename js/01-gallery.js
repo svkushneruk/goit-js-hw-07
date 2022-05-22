@@ -32,13 +32,14 @@ function onImgClick(e) {
 	`);
     lightBox.show();
     
-    this.addEventListener("keydown", onPresEscape);
+    window.addEventListener("keydown", onPresEscape);
     function onPresEscape(e) {
         if (e.key !== "Escape") {
             return
         }
         lightBox.close();
-        this.removeEventListener("keydown", onPresEscape);
+        window.removeEventListener("keydown", onPresEscape);
+        window.removeEventListener("click", onPresEscape);
     }
 }
 
